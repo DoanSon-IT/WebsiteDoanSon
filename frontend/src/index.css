@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== THEME GIÁNG SINH TỐI MÀU ===== */
+:root {
+  --christmas-red: #c41e3a;
+  --christmas-green: #165b33;
+  --christmas-gold: #ffd700;
+  --christmas-silver: #c0c0c0;
+  --dark-bg: #0f1419;
+  --dark-card: #1a1f2e;
+  --dark-hover: #252b3b;
+  --snow-white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+  color: #e8e8e8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== HIỆU ỨNG TUYẾT RƠI ===== */
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+.snowflake {
+  position: fixed;
+  top: -10vh;
+  color: var(--snow-white);
+  font-size: 1em;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 9999;
+  animation: snowfall linear infinite;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* ===== HIỆU ỨNG ÁNH SÁNG GIÁNG SINH ===== */
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--christmas-gold), 0 0 10px var(--christmas-gold);
+  }
+
+  50% {
+    box-shadow: 0 0 20px var(--christmas-gold), 0 0 30px var(--christmas-red);
+  }
+}
+
+.christmas-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* ===== GRADIENT TEXT GIÁNG SINH ===== */
+.christmas-gradient-text {
+  background: linear-gradient(45deg, var(--christmas-red), var(--christmas-gold), var(--christmas-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+}
+
+/* ===== CARD STYLES ===== */
+.christmas-card {
+  background: var(--dark-card);
+  border: 2px solid rgba(196, 30, 58, 0.3);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.christmas-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.christmas-card:hover::before {
+  left: 100%;
+}
+
+.christmas-card:hover {
+  border-color: var(--christmas-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+}
+
+/* ===== BUTTON STYLES ===== */
+.btn-christmas {
+  background: linear-gradient(135deg, var(--christmas-red), #a01729);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-christmas::before {
+  content: '🎄';
+  position: absolute;
+  left: -30px;
+  transition: left 0.3s ease;
+}
+
+.btn-christmas:hover::before {
+  left: 10px;
+}
+
+.btn-christmas:hover {
+  background: linear-gradient(135deg, #a01729, var(--christmas-red));
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(196, 30, 58, 0.4);
+}
+
+.btn-christmas-secondary {
+  background: linear-gradient(135deg, var(--christmas-green), #0d3d21);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-christmas-secondary:hover {
+  background: linear-gradient(135deg, #0d3d21, var(--christmas-green));
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(22, 91, 51, 0.4);
+}
+
+/* ===== INPUT STYLES ===== */
+.christmas-input {
+  background: var(--dark-card);
+  border: 2px solid rgba(196, 30, 58, 0.3);
+  color: #e8e8e8;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.christmas-input:focus {
+  outline: none;
+  border-color: var(--christmas-gold);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.christmas-input::placeholder {
+  color: #888;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .christmas-card {
+    margin: 0.5rem;
+  }
+
+  .btn-christmas,
+  .btn-christmas-secondary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
